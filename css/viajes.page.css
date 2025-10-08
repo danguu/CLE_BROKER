@@ -1,0 +1,345 @@
+.travel-hero {
+  padding: 8rem 0 6rem;
+  color: #ffffff;
+}
+
+.travel-hero .hero-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.travel-hero .hero-bullets li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  font-size: 1rem;
+}
+
+.travel-hero .hero-bullets i {
+  color: var(--color-secondary);
+  margin-top: 0.2rem;
+}
+
+.travel-hero .hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.travel-hero-card {
+  padding: 2.8rem;
+  border-radius: 28px;
+  background: rgba(15, 23, 42, 0.82);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  color: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.travel-hero-card .card-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.26em;
+  font-size: 0.75rem;
+  color: rgba(226, 232, 240, 0.8);
+}
+
+.travel-hero-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  text-align: center;
+}
+
+.travel-hero-metrics strong {
+  font-size: 1.6rem;
+  color: #ffffff;
+}
+
+.travel-benefits {
+  padding: 6rem 0;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.04), rgba(59, 130, 246, 0.12));
+}
+
+.membership-note {
+  padding: 2.8rem;
+  border-radius: 28px;
+  background: #ffffff;
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  box-shadow: 0 28px 60px rgba(37, 99, 235, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+.membership-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 1.2rem;
+  border-radius: 999px;
+  background: rgba(37, 99, 235, 0.12);
+  color: var(--color-primary);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+.travel-process {
+  padding: 5.5rem 0;
+}
+
+.process-step {
+  padding: 2.6rem 2.4rem;
+  border-radius: 28px;
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  background: #ffffff;
+  box-shadow: 0 24px 55px rgba(15, 23, 42, 0.08);
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.process-step .step-number {
+  position: absolute;
+  top: -20px;
+  left: 24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  box-shadow: 0 18px 35px rgba(37, 99, 235, 0.22);
+}
+
+.process-step.active,
+.process-step:hover,
+.process-step:focus-within {
+  transform: translateY(-6px);
+  border-color: rgba(37, 99, 235, 0.36);
+  box-shadow: 0 32px 65px rgba(37, 99, 235, 0.18);
+}
+
+.travel-programs {
+  padding: 5.5rem 0;
+  background: #f8fafc;
+}
+
+.travel-card {
+  border-radius: 26px;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  box-shadow: 0 25px 55px rgba(15, 23, 42, 0.08);
+}
+
+.travel-card-image {
+  height: 220px;
+  background-size: cover;
+  background-position: center;
+}
+
+.travel-card-body {
+  padding: 2.1rem 2rem 2.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.travel-card-body h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.travel-card-body p {
+  color: #475569;
+}
+
+.travel-card-body .improved-btn {
+  align-self: stretch;
+  justify-content: center;
+}
+
+.travel-quote {
+  padding: 6rem 0;
+}
+
+.travel-form-card {
+  padding: 3rem 3.2rem;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(37, 99, 235, 0.22);
+  box-shadow: 0 32px 70px rgba(37, 99, 235, 0.16);
+}
+
+.travel-form-card label {
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.travel-form-card .form-control {
+  border-radius: 16px;
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  padding: 0.85rem 1.1rem;
+}
+
+.travel-form-card .form-control:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.18);
+}
+
+.travel-form-card .btn-secondary-outline {
+  padding: 0.9rem 1.4rem;
+}
+
+.quote-intro {
+  border-radius: 26px;
+  padding: 2.8rem;
+  background: #ffffff;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  box-shadow: 0 30px 60px rgba(15, 23, 42, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.quote-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.quote-list li {
+  display: flex;
+  gap: 0.8rem;
+  align-items: flex-start;
+  color: #475569;
+}
+
+.quote-list i {
+  color: var(--color-primary);
+  margin-top: 0.3rem;
+}
+
+.travel-trust {
+  padding: 5.5rem 0 6rem;
+  background: linear-gradient(135deg, rgba(226, 232, 240, 0.35), rgba(255, 255, 255, 0.2));
+}
+
+.testimonial-card {
+  padding: 2.4rem;
+  border-radius: 26px;
+  background: #ffffff;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  box-shadow: 0 26px 60px rgba(15, 23, 42, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  height: 100%;
+}
+
+.testimonial-text {
+  font-style: italic;
+  color: #334155;
+}
+
+.testimonial-author strong {
+  display: block;
+  font-size: 1.05rem;
+  color: var(--color-primary);
+}
+
+.trust-logos {
+  padding: 2.8rem;
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  box-shadow: 0 32px 70px rgba(37, 99, 235, 0.16);
+  display: grid;
+  gap: 0.9rem;
+  justify-items: start;
+}
+
+@media (max-width: 991.98px) {
+  .travel-hero {
+    padding-top: 7.2rem;
+  }
+
+  .travel-hero .hero-actions {
+    margin-top: 1.8rem;
+  }
+
+  .travel-form-card {
+    padding: 2.4rem 2.2rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .travel-hero {
+    padding: 7rem 0 4.5rem;
+  }
+
+  .travel-hero .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .travel-hero-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .membership-note {
+    padding: 2.4rem;
+  }
+
+  .process-step {
+    padding: 2.4rem 2rem;
+  }
+
+  .travel-card-image {
+    height: 200px;
+  }
+
+  .travel-form-card .btn-secondary-outline {
+    width: 100%;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .travel-hero-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .process-step .step-number {
+    left: 16px;
+  }
+
+  .travel-card-body {
+    padding: 1.8rem 1.6rem 2.2rem;
+  }
+
+  .travel-form-card {
+    padding: 2rem 1.6rem;
+  }
+}
