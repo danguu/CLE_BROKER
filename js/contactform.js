@@ -3,6 +3,7 @@ jQuery(document).ready(function($) {
 
   //Contact
   $('form.contactForm').submit(function() {
+    var isStubForm = $(this).data('stub') === true || $(this).attr('data-stub') === 'true';
     var f = $(this).find('.form-group'),
       ferror = false,
       emailExp = /^[^\s()<>@,;:\/]+@\w[\w\.-]+\.[a-z]{2,}$/i;
@@ -90,6 +91,14 @@ jQuery(document).ready(function($) {
     });
     if (ferror) return false;
     else var str = $(this).serialize();
+
+    if (isStubForm) {
+      $("#sendmessage").addClass("show");
+      $("#errormessage").removeClass("show");
+      $(this).find("input, textarea, select").val("");
+      console.info('TODO: Reemplazar stub del formulario con integración real.');
+      return false;
+    }
     var action = $(this).attr('action');
     if( ! action ) {
       action = 'contactform/contactform.php';
