@@ -23,8 +23,6 @@ La nueva página incluye:
 
 ## Desarrollo
 
-- HTML5 + Bootstrap 4
+- HTML5 + Bootstrap 
 - Hojas de estilo en `css/`
 - Scripts existentes en `js/`
-
-Para visualizar el sitio basta con abrir cualquiera de los archivos `.html` en un navegador moderno.
