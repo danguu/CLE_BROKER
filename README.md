@@ -3,10 +3,6 @@
 **CLE_BROKER** es un sitio web informativo diseñado para representar a una corredora o asesoría financiera.
 El proyecto está desarrollado íntegramente con **HTML**, **CSS** y **JavaScript**.
 
-##  Demo en línea
-
-El proyecto está publicado en **GitHub Pages** y se puede visitar directamente aquí: **[https://danguu.github.io/CLE_BROKER/](https://danguu.github.io/CLE_BROKER/)**
-
 ## Descripción general
 
 Este sitio busca ofrecer una presencia digital moderna y responsiva para una empresa del sector financiero o de seguros.
