@@ -1,0 +1,322 @@
+/* Cle_Broker – Chatbot Widget Styles */
+:root {
+  --cbot-bg: #0f172a;
+  --cbot-surface: #111827;
+  --cbot-text: #e5e7eb;
+  --cbot-accent: #116d2586;
+  --cbot-accent-2: #027c6ca1;
+  --cbot-border: #1f2937;
+  --cbot-bubble: #0b1220;
+  --cbot-user: #1e3a8a;
+  --cbot-shadow: 0 10px 30px rgba(0, 0, 0, .35);
+  --cbot-radius: 16px;
+  --cbot-radius-lg: 20px;
+  --cbot-font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+.cbot-theme-light {
+  --cbot-bg: #ffffff;
+  --cbot-surface: #f7f7f8;
+  --cbot-text: #0b1220;
+  --cbot-accent: #16a34a;
+  --cbot-accent-2: #059669;
+  --cbot-border: #e5e7eb;
+  --cbot-bubble: #ffffff;
+  --cbot-user: #e2f5ea;
+  --cbot-shadow: 0 12px 40px rgba(18, 18, 23, .15);
+}
+
+.cbot-root {
+  all: initial;
+  font-family: var(--cbot-font);
+}
+
+.cbot-root * {
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.cbot-root button {
+  cursor: pointer;
+}
+
+/* ===== Botón flotante arriba derecha ===== */
+.cbot-fab {
+  position: fixed;
+  top: 45px;
+  /* altura desde la parte superior */
+  right: 120px;
+  /* alineado con el margen del menú */
+  bottom: auto;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background: var(--cbot-accent);
+  color: #fff;
+  border: none;
+  box-shadow: none;
+  font-size: 18px;
+  display: grid;
+  place-items: center;
+  z-index: 2147483647;
+  /* sobre el header */
+}
+
+.cbot-fab:hover {
+  background: var(--cbot-accent-2);
+}
+
+/* ===== Panel del chat ===== */
+.cbot-panel {
+  position: fixed;
+  top: 70px;
+  /* debajo del navbar */
+  right: 20px;
+  bottom: auto;
+  z-index: 2147483001;
+  width: min(380px, calc(100vw - 32px));
+  height: 480px;
+  display: none;
+  background: var(--cbot-bg);
+  color: var(--cbot-text);
+  border: 1px solid var(--cbot-border);
+  border-radius: var(--cbot-radius-lg);
+  box-shadow: var(--cbot-shadow);
+  overflow: hidden;
+}
+
+.cbot-panel.open {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.cbot-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 12px;
+  background: var(--cbot-surface);
+  border-bottom: 1px solid var(--cbot-border);
+}
+
+.cbot-brand {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.cbot-logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: #0ea5e9;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+}
+
+.cbot-title {
+  font-weight: 700;
+}
+
+.cbot-sub {
+  font-size: 12px;
+  opacity: .8;
+}
+
+.cbot-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.cbot-action {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  border: 1px solid var(--cbot-border);
+  background: transparent;
+  color: var(--cbot-text);
+}
+
+.cbot-action:hover {
+  background: var(--cbot-bubble);
+}
+
+.cbot-body {
+  padding: 12px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background:
+    radial-gradient(58% 40% at 100% 0%, rgba(22, 163, 74, .12), transparent 50%),
+    radial-gradient(50% 50% at 0% 100%, rgba(14, 165, 233, .10), transparent 50%),
+    var(--cbot-bg);
+}
+
+.cbot-msg {
+  display: flex;
+}
+
+.cbot-msg.bot {
+  justify-content: flex-start;
+}
+
+.cbot-msg.user {
+  justify-content: flex-end;
+}
+
+.cbot-bubble {
+  max-width: 85%;
+  padding: 10px 12px;
+  border-radius: 14px;
+  line-height: 1.35;
+  background: var(--cbot-bubble);
+  border: 1px solid var(--cbot-border);
+}
+
+.cbot-msg.user .cbot-bubble {
+  background: var(--cbot-user);
+  color: #0b1220;
+  border-color: transparent;
+}
+
+.cbot-choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cbot-choice {
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-size: 13px;
+  border: 1px solid var(--cbot-border);
+  background: transparent;
+  color: var(--cbot-text);
+}
+
+.cbot-choice:hover {
+  background: var(--cbot-bubble);
+}
+
+.cbot-list {
+  padding-left: 18px;
+  margin: 6px 0;
+}
+
+.cbot-composer {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  padding: 10px;
+  background: var(--cbot-surface);
+  border-top: 1px solid var(--cbot-border);
+}
+
+.cbot-composer input {
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid var(--cbot-border);
+  background: var(--cbot-bubble);
+  color: var(--cbot-text);
+  padding: 0 12px;
+}
+
+.cbot-send {
+  min-width: 84px;
+  height: 42px;
+  border-radius: 12px;
+  border: none;
+  background: var(--cbot-accent);
+  color: #fff;
+  font-weight: 600;
+}
+
+.cbot-send:hover {
+  background: var(--cbot-accent-2);
+}
+
+/* ===== Formulario de leads ===== */
+.cbot-lead {
+  display: grid;
+  gap: 10px;
+  padding: 10px;
+  background: var(--cbot-surface);
+  border: none;
+  box-shadow: inset 0 0 0 1px var(--cbot-border);
+  border-radius: 0;
+  margin: 0;
+}
+
+.cbot-lead .row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.cbot-lead label {
+  display: grid;
+  gap: 4px;
+  font-size: 12px;
+}
+
+.cbot-lead input,
+.cbot-lead select,
+.cbot-lead textarea {
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--cbot-border);
+  background: var(--cbot-bubble);
+  color: var(--cbot-text);
+  width: 100%;
+}
+
+.cbot-lead .consent {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.cbot-lead .actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.cbot-lead .actions .primary {
+  background: var(--cbot-accent);
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 10px;
+}
+
+.cbot-lead .actions .ghost {
+  background: transparent;
+  color: var(--cbot-text);
+  border: 1px solid var(--cbot-border);
+  padding: 8px 12px;
+  border-radius: 10px;
+}
+
+@media (max-width: 480px) {
+  .cbot-panel {
+    right: 12px;
+    left: 12px;
+    width: auto;
+    height: 70vh;
+    top: 60px;
+  }
+
+  .cbot-lead .row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== Ocultar botón cuando el panel está abierto ===== */
+#cbot-root .cbot-panel.open+.cbot-fab,
+#cbot-root .cbot-fab[aria-expanded="true"] {
+  display: none !important;
+}

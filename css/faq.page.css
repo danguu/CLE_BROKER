@@ -1,0 +1,233 @@
+/* Estilos específicos para la página de preguntas frecuentes */
+
+.faq-hero .hero-overlay {
+  background: linear-gradient(120deg, rgba(15, 23, 42, 0.88) 20%, rgba(37, 99, 235, 0.7) 70%, rgba(124, 58, 237, 0.6) 100%);
+  opacity: 0.94;
+}
+
+.faq-hero-card {
+  padding: 2.6rem 2.8rem;
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.faq-hero-card .card-label {
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 0.45rem 1.05rem;
+  border-radius: 999px;
+  background: rgba(124, 58, 237, 0.16);
+  color: var(--color-accent);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+}
+
+.faq-wrapper .faq-panel {
+  padding: 2.6rem 2.8rem;
+}
+
+.faq-search {
+  margin-bottom: 2.2rem;
+}
+
+.faq-search .search-input {
+  width: 100%;
+  border-radius: 999px;
+  padding: 0.9rem 1.6rem;
+  border: 1px solid rgba(37, 99, 235, 0.3);
+  box-shadow: none;
+}
+
+.faq-search .search-input:focus {
+  border-color: rgba(16, 185, 129, 0.6);
+  box-shadow: 0 0 0 0.25rem rgba(37, 99, 235, 0.15);
+  outline: none;
+}
+
+.quick-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.quick-link {
+  padding: 0.55rem 1.2rem;
+  border-radius: 999px;
+  background: rgba(37, 99, 235, 0.08);
+  color: var(--color-primary);
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.quick-link:hover {
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+
+.faq-category {
+  padding: 2.2rem 0;
+  border-top: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+.faq-category:first-of-type {
+  border-top: none;
+}
+
+.category-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.35rem;
+  margin-bottom: 1.5rem;
+}
+
+.category-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(37, 99, 235, 0.12);
+  color: var(--color-primary);
+  font-size: 1.4rem;
+}
+
+.faq-item {
+  margin-bottom: 1rem;
+}
+
+.faq-question {
+  font-weight: 600;
+  color: var(--color-primary);
+  padding: 1rem 1.2rem;
+  border-radius: 16px;
+  background: rgba(37, 99, 235, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.faq-question:hover {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.16), rgba(16, 185, 129, 0.16));
+  transform: translateX(4px);
+}
+
+.faq-question i {
+  transition: transform 0.3s ease;
+}
+
+.faq-question.active {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(124, 58, 237, 0.2));
+  color: var(--color-dark);
+}
+
+.faq-question.active i {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  padding: 0 1.2rem;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  color: var(--color-muted);
+}
+
+.faq-answer.show {
+  max-height: 500px;
+  padding: 1.2rem;
+}
+
+.faq-icon {
+  margin-right: 0.6rem;
+  color: var(--color-secondary);
+}
+
+.faq-aside {
+  padding: 2.4rem 2.6rem;
+  position: sticky;
+  top: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.faq-aside .card-label {
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  background: rgba(16, 185, 129, 0.16);
+  color: var(--color-secondary);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+}
+
+.contact-list {
+  display: grid;
+  gap: 0.8rem;
+  margin: 0;
+}
+
+.contact-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 600;
+}
+
+.contact-list a {
+  color: var(--color-primary);
+}
+
+.faq-aside-divider {
+  height: 1px;
+  background: rgba(148, 163, 184, 0.2);
+}
+
+.faq-cta {
+  margin-top: 3rem;
+  padding: 2.6rem 2.8rem;
+}
+
+.faq-cta h2 {
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 1199.98px) {
+  .faq-aside {
+    position: static;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .faq-wrapper .faq-panel,
+  .faq-aside,
+  .faq-cta {
+    padding: 2.2rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .faq-question {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+
+  .faq-cta {
+    text-align: center;
+  }
+}

@@ -1,0 +1,142 @@
+/* Estilos específicos para la página Sobre Nosotros */
+
+.about-hero .hero-overlay {
+  background: linear-gradient(120deg, rgba(15, 23, 42, 0.88) 15%, rgba(45, 170, 34, 0.72) 55%, rgba(16, 185, 129, 0.65) 100%);
+  opacity: 0.94;
+}
+
+.about-hero-card {
+  padding: 2.6rem 2.8rem;
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.about-hero-card .card-label {
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 0.45rem 1.05rem;
+  border-radius: 999px;
+  background: rgba(37, 99, 235, 0.14);
+  color: var(--color-primary);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+}
+
+.about-story-media {
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-story-media img {
+  max-width: 240px;
+}
+
+.about-values .value-card {
+  padding: 2.4rem 2.2rem;
+  height: 100%;
+}
+
+.about-values .value-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.9rem;
+}
+
+.about-values .value-card p {
+  margin-bottom: 0;
+}
+
+.about-values .value-card .list-check {
+  margin-top: 1rem;
+}
+
+.about-journey .journey-timeline {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.8rem;
+}
+
+.journey-item {
+  padding: 2.4rem 2.2rem;
+  position: relative;
+}
+
+.journey-item::after {
+  content: '';
+  position: absolute;
+  inset: auto -20% -40% auto;
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(circle at center, rgba(37, 99, 235, 0.12), transparent 70%);
+  z-index: -1;
+}
+
+.journey-year {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 1.1rem;
+  border-radius: 999px;
+  background: rgba(53, 235, 37, 0.12);
+  color: var(--color-primary);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 1.1rem;
+}
+
+.journey-item h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.7rem;
+}
+
+.about-cta-panel {
+  padding: 2.8rem 3rem;
+}
+
+.about-cta-panel h2 {
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  margin-bottom: 1rem;
+}
+
+.about-cta-panel p {
+  margin-bottom: 0;
+}
+
+@media (max-width: 1199.98px) {
+  .about-journey .journey-timeline {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 991.98px) {
+
+  .about-hero-card,
+  .about-values .value-card,
+  .journey-item {
+    padding: 2.2rem;
+  }
+
+  .about-story-media {
+    padding: 1.8rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .about-journey .journey-timeline {
+    grid-template-columns: 1fr;
+  }
+
+  .about-story-media img {
+    max-width: 180px;
+  }
+
+  .about-cta-panel {
+    text-align: center;
+  }
+}
