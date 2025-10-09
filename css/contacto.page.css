@@ -5,6 +5,10 @@
   opacity: 0.92;
 }
 
+.contact-hero .hero-title {
+  color: #ffffff;
+}
+
 .contact-hero-card {
   padding: 2.4rem 2.6rem;
   border-radius: var(--radius-lg);

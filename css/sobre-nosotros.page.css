@@ -5,6 +5,12 @@
   opacity: 0.94;
 }
 
+.about-hero .hero-eyebrow,
+.about-hero .hero-title,
+.about-hero .hero-subtitle {
+  color: #ffffff;
+}
+
 .about-hero-card {
   padding: 2.6rem 2.8rem;
   border-radius: var(--radius-lg);

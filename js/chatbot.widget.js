@@ -18,11 +18,44 @@
       contacto: "/contacto.html",
       servicios: "/servicios.html",
       faq: "/faq.html",
-      propiedades: "/servicios.html"
+      propiedades: "/servicios.html#propiedades-destacadas"
     },
     leadWebhook: "", // opcional backend
     consentText: "Acepto el tratamiento de datos para ser contactado."
   };
+
+  const PROPERTIES = [
+    {
+      id: "apto-170",
+      title: "Apartamento Calle 170 - Bogotá",
+      location: "Calle 170, Usaquén",
+      price: 680000000,
+      area: "280 m²",
+      beds: 4,
+      baths: 3,
+      parking: 2,
+      badge: "Destacado",
+      image: "img/1703.jpg",
+      summary: "Dúplex con terraza privada, iluminación natural y acabados premium.",
+      ctaLabel: "Solicitar información",
+      ctaHref: "contacto.html"
+    },
+    {
+      id: "apto-cedritos",
+      title: "Apartamento 2 - Bogotá",
+      location: "Cedritos, Bogotá",
+      price: 280800000,
+      area: "85 m²",
+      beds: 2,
+      baths: 2,
+      parking: 1,
+      badge: "Nuevo",
+      image: "img/apt7.jpg",
+      summary: "Apartamento moderno listo para entrega, ideal para inversión o primera vivienda.",
+      ctaLabel: "Quiero visitar",
+      ctaHref: "contacto.html"
+    }
+  ];
 
   // ============== HTML ==============
   const html = `
@@ -73,6 +106,7 @@
     return Math.round(val);
   };
   const sanitize = (s) => s.replace(/[<>]/g, "");
+  const featuredPropertiesUrl = new URL(CFG.nav.propiedades, window.location.origin);
 
   // ============== VIEW HELPERS ==============
   const bot = {
@@ -157,7 +191,7 @@
 
       // --- versión sin redirecciones ---
       f.querySelector('[data-action="whatsapp"]').addEventListener("click", () => {
-        bot.msg(`Puedes escribirnos por <strong>WhatsApp</strong>:<br>${CFG.whatsappURL}`);
+        window.open(`https://api.whatsapp.com/send?phone=${CFG.whatsappURL}`, "_blank", "noopener");
       });
 
       f.querySelector('[data-action="email"]').addEventListener("click", () => {
@@ -184,18 +218,49 @@
     showNav() {
       bot.msg(`Navega rápido:`);
       const items = [
-        { label: "Propiedades", onClick: () => window.open(CFG.nav.propiedades, "_blank") },
+        { label: "Propiedades", onClick: () => window.open(featuredPropertiesUrl.href, "_blank") },
         { label: "Servicios", onClick: () => window.open(CFG.nav.servicios, "_blank") },
         { label: "FAQ", onClick: () => window.open(CFG.nav.faq, "_blank") },
         { label: "Contacto", onClick: () => window.open(CFG.nav.contacto, "_blank") },
       ];
       bot.choices(items);
     },
+    showProperties() {
+      bot.msg(`<strong>Propiedades destacadas disponibles</strong><br/>Explora opciones listas para agendar visita:`);
+      PROPERTIES.forEach((prop) => {
+        const features = [
+          { label: "Área", value: prop.area },
+          { label: "Habitaciones", value: prop.beds },
+          { label: "Baños", value: prop.baths },
+          { label: "Parqueaderos", value: prop.parking }
+        ].map((f) => `<li><span>${f.label}</span><strong>${f.value}</strong></li>`).join("");
+        bot.msg(`
+          <article class="cbot-property" data-id="${prop.id}">
+            <div class="cbot-property-media">
+              ${prop.badge ? `<span class="cbot-property-badge">${prop.badge}</span>` : ""}
+              ${prop.image ? `<img src="${prop.image}" alt="${prop.title}">` : ""}
+            </div>
+            <div class="cbot-property-content">
+              <h3>${prop.title}</h3>
+              <p class="cbot-property-location">📍 ${prop.location}</p>
+              <p class="cbot-property-summary">${prop.summary}</p>
+              <div class="cbot-property-price">${fmtCurrency(prop.price)}</div>
+              <ul class="cbot-property-features">${features}</ul>
+              <a class="cbot-property-cta" href="${prop.ctaHref}" target="_blank" rel="noopener">${prop.ctaLabel}</a>
+            </div>
+          </article>
+        `.trim());
+      });
+      bot.msg(`¿Te interesa alguna? Puedo agendar una visita o enviarte más alternativas.`);
+    },
     quickActions() {
       bot.choices([
-        { label: "Ver Propiedades", onClick: () => window.open(CFG.nav.propiedades, "_blank") },
+        { label: "Propiedades", onClick: () => bot.showProperties() },
         { label: "Agendar visita", onClick: () => bot.formLead({ message: "Quiero agendar visita" }) },
-        { label: "WhatsApp", onClick: () => bot.msg(`WhatsApp: ${CFG.whatsappURL}`) },
+        {
+          label: "WhatsApp",
+          onClick: () => window.open(`https://api.whatsapp.com/send?phone=${CFG.whatsappURL}`, "_blank", "noopener"),
+        },
         { label: "Llamar", onClick: () => bot.msg(`Teléfono: ${CFG.phoneDisplay}`) },
         { label: "Horarios", onClick: () => bot.showHours() },
         { label: "Email", onClick: () => bot.msg(`Correo: ${CFG.email}`) },
@@ -207,8 +272,7 @@
   function route(textRaw) {
     const text = textRaw.toLowerCase();
     if (/(propiedad|propiedades|inmueble|apartamento|casa|oficina)/.test(text)) {
-      bot.msg("Abro el listado de propiedades.");
-      window.open(CFG.nav.propiedades, "_blank");
+      bot.showProperties();
       return;
     }
     if (/(arriendo|arrendar|renta)/.test(text)) {
