@@ -157,7 +157,7 @@
 
       // --- versión sin redirecciones ---
       f.querySelector('[data-action="whatsapp"]').addEventListener("click", () => {
-        bot.msg(`Puedes escribirnos por <strong>WhatsApp</strong>:<br>${CFG.whatsappURL}`);
+        window.open(`https://api.whatsapp.com/send?phone=${CFG.whatsappURL}`, "_blank", "noopener");
       });
 
       f.querySelector('[data-action="email"]').addEventListener("click", () => {
@@ -195,7 +195,10 @@
       bot.choices([
         { label: "Ver Propiedades", onClick: () => window.open(CFG.nav.propiedades, "_blank") },
         { label: "Agendar visita", onClick: () => bot.formLead({ message: "Quiero agendar visita" }) },
-        { label: "WhatsApp", onClick: () => bot.msg(`WhatsApp: ${CFG.whatsappURL}`) },
+        {
+          label: "WhatsApp",
+          onClick: () => window.open(`https://api.whatsapp.com/send?phone=${CFG.whatsappURL}`, "_blank", "noopener"),
+        },
         { label: "Llamar", onClick: () => bot.msg(`Teléfono: ${CFG.phoneDisplay}`) },
         { label: "Horarios", onClick: () => bot.showHours() },
         { label: "Email", onClick: () => bot.msg(`Correo: ${CFG.email}`) },

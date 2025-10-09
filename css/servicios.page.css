@@ -5,6 +5,10 @@
   opacity: 0.94;
 }
 
+.services-hero .hero-title {
+  color: #ffffff;
+}
+
 .services-hero-card {
   padding: 2.6rem 2.8rem;
   border-radius: var(--radius-lg);
