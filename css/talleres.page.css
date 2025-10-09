@@ -2,6 +2,10 @@
   background: linear-gradient(115deg, rgba(15, 23, 42, 0.9) 8%, rgba(37, 99, 235, 0.72) 60%, rgba(124, 58, 237, 0.68) 100%);
 }
 
+.workshops-hero .hero-title {
+  color: #ffffff;
+}
+
 .workshops-hero .hero-actions {
   display: flex;
   flex-wrap: wrap;

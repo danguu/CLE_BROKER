@@ -5,6 +5,10 @@
   opacity: 0.94;
 }
 
+.faq-hero .hero-title {
+  color: #ffffff;
+}
+
 .faq-hero-card {
   padding: 2.6rem 2.8rem;
   border-radius: var(--radius-lg);

@@ -18,7 +18,7 @@
       contacto: "/contacto.html",
       servicios: "/servicios.html",
       faq: "/faq.html",
-      propiedades: "/servicios.html"
+      propiedades: "/servicios.html#propiedades-destacadas"
     },
     leadWebhook: "", // opcional backend
     consentText: "Acepto el tratamiento de datos para ser contactado."
@@ -73,6 +73,23 @@
     return Math.round(val);
   };
   const sanitize = (s) => s.replace(/[<>]/g, "");
+  const featuredPropertiesUrl = new URL(CFG.nav.propiedades, window.location.origin);
+  const goToFeaturedProperties = () => {
+    const samePath = window.location.pathname === featuredPropertiesUrl.pathname
+      || window.location.pathname.endsWith(featuredPropertiesUrl.pathname);
+    if (samePath) {
+      if (featuredPropertiesUrl.hash) {
+        const target = document.getElementById(featuredPropertiesUrl.hash.slice(1));
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+          return;
+        }
+        window.location.hash = featuredPropertiesUrl.hash;
+        return;
+      }
+    }
+    window.location.href = featuredPropertiesUrl.href;
+  };
 
   // ============== VIEW HELPERS ==============
   const bot = {
@@ -157,7 +174,7 @@
 
       // --- versión sin redirecciones ---
       f.querySelector('[data-action="whatsapp"]').addEventListener("click", () => {
-        bot.msg(`Puedes escribirnos por <strong>WhatsApp</strong>:<br>${CFG.whatsappURL}`);
+        window.open(`https://api.whatsapp.com/send?phone=${CFG.whatsappURL}`, "_blank", "noopener");
       });
 
       f.querySelector('[data-action="email"]').addEventListener("click", () => {
@@ -184,7 +201,7 @@
     showNav() {
       bot.msg(`Navega rápido:`);
       const items = [
-        { label: "Propiedades", onClick: () => window.open(CFG.nav.propiedades, "_blank") },
+        { label: "Propiedades", onClick: () => window.open(featuredPropertiesUrl.href, "_blank") },
         { label: "Servicios", onClick: () => window.open(CFG.nav.servicios, "_blank") },
         { label: "FAQ", onClick: () => window.open(CFG.nav.faq, "_blank") },
         { label: "Contacto", onClick: () => window.open(CFG.nav.contacto, "_blank") },
@@ -193,9 +210,12 @@
     },
     quickActions() {
       bot.choices([
-        { label: "Ver Propiedades", onClick: () => window.open(CFG.nav.propiedades, "_blank") },
+        { label: "Ver Propiedades", onClick: goToFeaturedProperties },
         { label: "Agendar visita", onClick: () => bot.formLead({ message: "Quiero agendar visita" }) },
-        { label: "WhatsApp", onClick: () => bot.msg(`WhatsApp: ${CFG.whatsappURL}`) },
+        {
+          label: "WhatsApp",
+          onClick: () => window.open(`https://api.whatsapp.com/send?phone=${CFG.whatsappURL}`, "_blank", "noopener"),
+        },
         { label: "Llamar", onClick: () => bot.msg(`Teléfono: ${CFG.phoneDisplay}`) },
         { label: "Horarios", onClick: () => bot.showHours() },
         { label: "Email", onClick: () => bot.msg(`Correo: ${CFG.email}`) },
