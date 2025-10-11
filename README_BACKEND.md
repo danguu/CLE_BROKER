@@ -12,9 +12,17 @@ Backend modular en Node.js + Express con PostgreSQL y Prisma para manejar los fo
 
 1. Copia el archivo de variables de entorno:
 
-   ```bash
-   cp .env.example .env
-   ```
+   - **Linux / macOS:**
+
+     ```bash
+     cp .env.example .env
+     ```
+
+   - **Windows (PowerShell o CMD):**
+
+     ```powershell
+     copy .env.example .env
+     ```
 
 2. Ajusta las variables obligatorias en `.env`:
 
@@ -23,7 +31,7 @@ Backend modular en Node.js + Express con PostgreSQL y Prisma para manejar los fo
    - `ADMIN_EMAIL` y `ADMIN_PASSWORD`
    - Parámetros SMTP (`SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`)
 
-3. Instala dependencias y genera el cliente Prisma:
+3. Instala dependencias y genera el cliente Prisma (los comandos son los mismos en Windows, macOS y Linux):
 
    ```bash
    npm install
@@ -37,11 +45,16 @@ Backend modular en Node.js + Express con PostgreSQL y Prisma para manejar los fo
    npm run seed
    ```
 
+   > 💡 En Windows puedes ejecutar estos comandos desde PowerShell, CMD o la terminal integrada de tu editor (VS Code). No es
+   > necesario usar WSL, aunque también es compatible.
+
 5. Inicia el servidor en desarrollo:
 
    ```bash
    npm run dev
    ```
+
+   Si prefieres un script dedicado en Windows, puedes usar `npm run dev` dentro de `run.bat` o crear un acceso directo.
 
 El API queda disponible en `http://localhost:3000`.
 
