@@ -264,9 +264,11 @@
             </ul>
           </div>
           <div class="col-lg-6">
-            <form class="form-a contactForm workshops-quote-form" method="post" role="form" action="" data-stub="true">
-              <div id="sendmessage">¡Tu mensaje ha sido enviado! Te contactaremos pronto.</div>
-              <div id="errormessage"></div>
+            <form class="form-a workshops-quote-form" method="post" role="form" data-endpoint="/api/workshops"
+              data-success-message="¡Gracias! Te escribiremos con la cotización en menos de 24 horas."
+              data-error-message="No pudimos registrar tu solicitud. Vuelve a intentarlo o escríbenos por WhatsApp.">
+              <div class="form-message form-message-success" role="status" hidden></div>
+              <div class="form-message form-message-error" role="alert" hidden></div>
               <div class="row g-3">
                 <div class="col-12">
                   <div class="form-group">
@@ -419,6 +421,7 @@
   <script src="lib/easing/easing.min.js"></script>
   <script src="lib/owlcarousel/owl.carousel.min.js"></script>
   <script src="lib/scrollreveal/scrollreveal.min.js"></script>
+  <script src="js/app-config.js"></script>
   <script src="js/contactform.js"></script>
   <script src="js/main.js"></script>
   <script>window.CHATBOT_CONFIG = window.CHATBOT_CONFIG || {};</script>
