@@ -101,7 +101,7 @@ jQuery(document).ready(function($) {
     }
     var action = $(this).attr('action');
     if( ! action ) {
-      action = 'contactform/contactform.php';
+      action = '/api/contact';
     }
     $.ajax({
       type: "POST",

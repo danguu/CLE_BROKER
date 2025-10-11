@@ -185,7 +185,7 @@
                 mejores
                 opciones.</p>
             </div>
-            <form class="form-a">
+            <form class="form-a contactForm" method="post" action="/api/contact" data-stub="false">
               <div id="sendmessage">¡Tu mensaje ha sido enviado! Te contactaremos pronto.</div>
               <div id="errormessage"></div>
               <div class="row g-3">
@@ -228,9 +228,9 @@
                   <div class="form-group">
                     <label class="form-label">¿Cómo prefieres que te contactemos?</label>
                     <div class="contact-preferences">
-                      <label><input type="checkbox" name="preferred[]" value="telefono"> Teléfono</label>
-                      <label><input type="checkbox" name="preferred[]" value="whatsapp"> WhatsApp</label>
-                      <label><input type="checkbox" name="preferred[]" value="email"> Email</label>
+                      <label><input type="checkbox" name="preferred" value="telefono"> Teléfono</label>
+                      <label><input type="checkbox" name="preferred" value="whatsapp"> WhatsApp</label>
+                      <label><input type="checkbox" name="preferred" value="email"> Email</label>
                     </div>
                   </div>
                 </div>

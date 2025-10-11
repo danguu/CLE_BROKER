@@ -51,21 +51,59 @@ El sitio está publicado y accesible directamente desde GitHub Pages.
 
 **URL de acceso:** [https://danguu.github.io/CLE_BROKER/](https://danguu.github.io/CLE_BROKER/)
 
-##  Ejecución local con Python
+## Backend (FastAPI)
 
-En Windows:
+El proyecto ahora incluye un backend ligero construido con **FastAPI** para procesar el formulario de contacto y guardar los mensajes enviados por los usuarios.
+
+### Requisitos previos
+
+1. **Python 3.10 o superior** instalado en tu equipo.
+2. **pip** (gestor de paquetes de Python).
+3. Opcional pero recomendado: un entorno virtual creado con `python -m venv venv`.
+
+### Instalación de dependencias
+
+Desde la raíz del proyecto ejecuta los siguientes pasos:
 
 ```bash
-run.bat
+python -m venv venv          # Opcional, pero recomendable
+source venv/bin/activate     # En Windows usa: venv\Scripts\activate
+pip install -r backend/requirements.txt
 ```
 
-En Linux / macOS:
+### Ejecutar el servidor en desarrollo
 
-```bash
-./run.sh
-```
+Tienes tres alternativas equivalentes para iniciar el backend junto con los archivos estáticos:
 
-Ambos scripts lanzan el servidor y abren el navegador de forma automática.
+1. Usar el script para Windows:
+
+   ```bash
+   run.bat
+   ```
+
+2. Usar el script para Linux/macOS:
+
+   ```bash
+   ./run.sh
+   ```
+
+3. Ejecutar directamente con Python/uvicorn:
+
+   ```bash
+   python -m uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000
+   ```
+
+Al iniciar el servidor se abrirá el navegador en `http://localhost:8000`. FastAPI servirá automáticamente el frontend y responderá a las solicitudes del formulario.
+
+### Dónde se guardan los mensajes
+
+Cada envío del formulario de contacto se almacena en `backend/data/messages.json`. El archivo se crea automáticamente y puedes inspeccionarlo para revisar el historial.
+
+### API disponible
+
+- `GET /api/health`: comprueba el estado del backend.
+- `POST /api/contact`: recibe los datos del formulario y devuelve `OK` si todo fue correcto.
+- `GET /api/contact`: lista los mensajes recibidos (ordenados del más reciente al más antiguo).
 
 ## Personalización
 

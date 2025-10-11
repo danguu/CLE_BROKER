@@ -1,9 +1,15 @@
-import http.server
-import socketserver
+"""Convenience launcher for the FastAPI backend."""
+
 import webbrowser
 
-PORT = 5500
-Handler = http.server.SimpleHTTPRequestHandler
-with socketserver.TCPServer(("", PORT), Handler) as httpd:
-    webbrowser.open(f"http://localhost:{PORT}")
-    httpd.serve_forever()
+import uvicorn
+
+
+def main() -> None:
+    port = 8000
+    webbrowser.open(f"http://localhost:{port}")
+    uvicorn.run("backend.main:app", host="0.0.0.0", port=port, reload=True)
+
+
+if __name__ == "__main__":
+    main()
