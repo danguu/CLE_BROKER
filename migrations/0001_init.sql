@@ -1,0 +1,88 @@
+-- Prisma migration skeleton
+CREATE TABLE IF NOT EXISTS "Lead" (
+  "id" SERIAL PRIMARY KEY,
+  "nombre" TEXT NOT NULL,
+  "email" TEXT NOT NULL,
+  "whatsapp" TEXT NOT NULL,
+  "destinoInteres" TEXT,
+  "origenFormulario" TEXT NOT NULL,
+  "ipAddress" TEXT,
+  "userAgent" TEXT,
+  "referer" TEXT,
+  "createdAt" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS "ProgramaTuristico" (
+  "id" SERIAL PRIMARY KEY,
+  "titulo" TEXT NOT NULL,
+  "descripcion" TEXT NOT NULL,
+  "dias" INTEGER NOT NULL,
+  "noches" INTEGER NOT NULL,
+  "allInclusive" BOOLEAN NOT NULL DEFAULT FALSE,
+  "destino" TEXT NOT NULL,
+  "rating" DOUBLE PRECISION,
+  "visible" BOOLEAN NOT NULL DEFAULT TRUE,
+  "createdAt" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  "updatedAt" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS "Cotizacion" (
+  "id" SERIAL PRIMARY KEY,
+  "leadId" INTEGER NOT NULL REFERENCES "Lead"("id") ON DELETE CASCADE,
+  "programaId" INTEGER REFERENCES "ProgramaTuristico"("id") ON DELETE SET NULL,
+  "mensaje" TEXT,
+  "notas" TEXT,
+  "estado" TEXT NOT NULL DEFAULT 'pendiente',
+  "createdAt" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS "Beneficio" (
+  "id" SERIAL PRIMARY KEY,
+  "titulo" TEXT NOT NULL,
+  "detalle" TEXT NOT NULL,
+  "createdAt" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  "updatedAt" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS "Testimonio" (
+  "id" SERIAL PRIMARY KEY,
+  "autor" TEXT NOT NULL,
+  "contenido" TEXT NOT NULL,
+  "fuente" TEXT,
+  "visible" BOOLEAN NOT NULL DEFAULT TRUE,
+  "createdAt" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  "updatedAt" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS "ServicioCleBroker" (
+  "id" SERIAL PRIMARY KEY,
+  "titulo" TEXT NOT NULL,
+  "descripcionCorta" TEXT NOT NULL,
+  "descripcionLarga" TEXT,
+  "visible" BOOLEAN NOT NULL DEFAULT TRUE,
+  "orden" INTEGER NOT NULL DEFAULT 0,
+  "createdAt" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  "updatedAt" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TYPE "AdminUserRole" AS ENUM ('ADMIN', 'EDITOR');
+
+CREATE TABLE IF NOT EXISTS "AdminUser" (
+  "id" SERIAL PRIMARY KEY,
+  "email" TEXT NOT NULL UNIQUE,
+  "hash" TEXT NOT NULL,
+  "role" "AdminUserRole" NOT NULL DEFAULT 'ADMIN',
+  "createdAt" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  "updatedAt" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS "Config" (
+  "clave" TEXT PRIMARY KEY,
+  "valorJSON" TEXT NOT NULL,
+  "updatedAt" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX IF NOT EXISTS "Lead_email_idx" ON "Lead" ("email");
+CREATE INDEX IF NOT EXISTS "Cotizacion_estado_idx" ON "Cotizacion" ("estado");
+CREATE INDEX IF NOT EXISTS "ProgramaTuristico_visible_idx" ON "ProgramaTuristico" ("visible");
+CREATE INDEX IF NOT EXISTS "ServicioCleBroker_visible_idx" ON "ServicioCleBroker" ("visible");

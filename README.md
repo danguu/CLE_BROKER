@@ -75,3 +75,7 @@ Puedes adaptar fácilmente el proyecto según tus necesidades:
 * **Estilos:** modifica los colores, tipografías y tamaños en `css/estilos.css`.
 * **Scripts:** agrega o ajusta funciones en `js/main.js` para ampliar interactividad.
 * **Logos e íconos:** reemplaza los archivos en `img/` o usa SVG personalizados.
+
+## Backend API
+
+El repositorio ahora incluye un backend completo (carpeta `src/`) que expone endpoints REST para formularios, contenidos turísticos y autenticación administrativa sin modificar el frontend existente. Revisa [`README_BACKEND.md`](README_BACKEND.md) para detalles de despliegue, variables de entorno y ejemplos de integración mediante `fetch()`.

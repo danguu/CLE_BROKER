@@ -1,0 +1,98 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum AdminUserRole {
+  ADMIN
+  EDITOR
+}
+
+model Lead {
+  id               Int          @id @default(autoincrement())
+  nombre           String
+  email            String
+  whatsapp         String
+  destinoInteres   String?
+  origenFormulario String
+  ipAddress        String?
+  userAgent        String?
+  referer          String?
+  createdAt        DateTime     @default(now())
+  cotizaciones     Cotizacion[]
+}
+
+model Cotizacion {
+  id         Int               @id @default(autoincrement())
+  leadId     Int
+  lead       Lead              @relation(fields: [leadId], references: [id])
+  programaId Int?
+  programa   ProgramaTuristico? @relation(fields: [programaId], references: [id])
+  mensaje    String?
+  notas      String?
+  estado     String            @default("pendiente")
+  createdAt  DateTime          @default(now())
+}
+
+model ProgramaTuristico {
+  id           Int           @id @default(autoincrement())
+  titulo       String
+  descripcion  String
+  dias         Int
+  noches       Int
+  allInclusive Boolean       @default(false)
+  destino      String
+  rating       Float?
+  visible      Boolean       @default(true)
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  cotizaciones Cotizacion[]
+}
+
+model Beneficio {
+  id        Int      @id @default(autoincrement())
+  titulo    String
+  detalle   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Testimonio {
+  id        Int      @id @default(autoincrement())
+  autor     String
+  contenido String
+  fuente    String?
+  visible   Boolean @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ServicioCleBroker {
+  id               Int      @id @default(autoincrement())
+  titulo           String
+  descripcionCorta String
+  descripcionLarga String?
+  visible          Boolean @default(true)
+  orden            Int     @default(0)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model AdminUser {
+  id        Int           @id @default(autoincrement())
+  email     String        @unique
+  hash      String
+  role      AdminUserRole @default(ADMIN)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+}
+
+model Config {
+  clave     String  @id
+  valorJSON String
+  updatedAt DateTime @updatedAt
+}
