@@ -114,8 +114,13 @@ talleres) en una base de datos SQLite.
    Por defecto quedará escuchando en `http://localhost:8000` y creará el
    archivo de base de datos `backend/instance/cle_broker.sqlite` la primera
    vez que se ejecute.
+   - Mirar el sql:
+     
+     ```bash
+     sqlite3 cle_broker.sqlite
+     ```
 
-4. **Ejecutar el sitio estático (opcional)**
+5. **Ejecutar el sitio estático (opcional)**
 
    En otra terminal puedes usar los scripts existentes para ver el sitio
    mientras el backend está activo:
