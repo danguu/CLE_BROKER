@@ -454,16 +454,23 @@
           <div class="col-md-8 text-center">
             <h3>¿Buscas una propiedad específica?</h3>
             <p>Déjanos tus datos y te contactaremos con las mejores opciones disponibles</p>
-            <form class="form-a">
+            <form class="form-a" data-endpoint="/api/newsletter"
+              data-success-message="¡Gracias! Un asesor te contactará muy pronto."
+              data-error-message="No pudimos registrar tu solicitud. Intenta nuevamente en unos minutos.">
+              <div class="form-message form-message-success" role="status" hidden></div>
+              <div class="form-message form-message-error" role="alert" hidden></div>
               <div class="row">
                 <div class="col-md-6 mb-2">
-                  <input type="text" class="form-control form-control-lg" placeholder="Tu nombre" required>
+                  <input type="text" name="name" class="form-control form-control-lg"
+                    placeholder="Tu nombre" required>
                 </div>
                 <div class="col-md-6 mb-2">
-                  <input type="email" class="form-control form-control-lg" placeholder="Tu email" required>
+                  <input type="email" name="email" class="form-control form-control-lg"
+                    placeholder="Tu email" required>
                 </div>
                 <div class="col-md-12 mb-2">
-                  <textarea class="form-control" placeholder="¿Qué tipo de propiedad buscas?" rows="4"></textarea>
+                  <textarea name="requirements" class="form-control"
+                    placeholder="¿Qué tipo de propiedad buscas?" rows="4"></textarea>
                 </div>
                 <div class="col-md-12">
                   <button type="submit" class="improved-btn improved-btn-primary">Enviar solicitud</button>
@@ -537,8 +544,9 @@
   <script src="lib/easing/easing.min.js"></script>
   <script src="lib/owlcarousel/owl.carousel.min.js"></script>
   <script src="lib/scrollreveal/scrollreveal.min.js"></script>
-  <!-- Contact Form JavaScript File -->
-  <script src="contactform/contactform.js"></script>
+  <!-- Configuración y manejo de formularios -->
+  <script src="js/app-config.js"></script>
+  <script src="js/contactform.js"></script>
 
   <!-- Template Main Javascript File -->
   <script src="js/main.js"></script>

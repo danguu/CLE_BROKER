@@ -185,9 +185,11 @@
                 mejores
                 opciones.</p>
             </div>
-            <form class="form-a">
-              <div id="sendmessage">¡Tu mensaje ha sido enviado! Te contactaremos pronto.</div>
-              <div id="errormessage"></div>
+            <form class="form-a" data-endpoint="/api/contact"
+              data-success-message="¡Tu mensaje ha sido enviado! Te contactaremos pronto." data-error-message="No
+              pudimos enviar tu mensaje. Inténtalo de nuevo más tarde.">
+              <div class="form-message form-message-success" role="status" hidden></div>
+              <div class="form-message form-message-error" role="alert" hidden></div>
               <div class="row g-3">
                 <div class="col-md-6">
                   <div class="form-group">
@@ -228,9 +230,9 @@
                   <div class="form-group">
                     <label class="form-label">¿Cómo prefieres que te contactemos?</label>
                     <div class="contact-preferences">
-                      <label><input type="checkbox" name="preferred[]" value="telefono"> Teléfono</label>
-                      <label><input type="checkbox" name="preferred[]" value="whatsapp"> WhatsApp</label>
-                      <label><input type="checkbox" name="preferred[]" value="email"> Email</label>
+                      <label><input type="checkbox" name="preferred" value="telefono"> Teléfono</label>
+                      <label><input type="checkbox" name="preferred" value="whatsapp"> WhatsApp</label>
+                      <label><input type="checkbox" name="preferred" value="email"> Email</label>
                     </div>
                   </div>
                 </div>
@@ -354,7 +356,8 @@
   <script src="lib/easing/easing.min.js"></script>
   <script src="lib/owlcarousel/owl.carousel.min.js"></script>
   <script src="lib/scrollreveal/scrollreveal.min.js"></script>
-  <script src="contactform/contactform.js"></script>
+  <script src="js/app-config.js"></script>
+  <script src="js/contactform.js"></script>
   <script src="js/main.js"></script>
   <script>window.CHATBOT_CONFIG = window.CHATBOT_CONFIG || {};</script>
   <script src="js/chatbot.widget.js"></script>
