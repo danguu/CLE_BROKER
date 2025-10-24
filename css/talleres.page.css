@@ -108,6 +108,216 @@
   gap: 1.4rem;
 }
 
+.workshops-expert {
+  position: relative;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.workshops-expert::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(120% 120% at 90% 10%, rgba(37, 99, 235, 0.18) 0%, rgba(15, 23, 42, 0.08) 45%, transparent 80%), linear-gradient(150deg, rgba(15, 23, 42, 0.55) 0%, rgba(15, 23, 42, 0) 45%);
+  z-index: -2;
+}
+
+.workshops-expert .section-heading {
+  max-width: 760px;
+  margin: 0 auto 3rem;
+}
+
+.expert-card {
+  height: 100%;
+  padding: 2.6rem 2.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  border-radius: var(--radius-lg);
+}
+
+.expert-card .card-label {
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  font-weight: 700;
+}
+
+
+.expert-card__top {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.expert-avatar {
+  width: 76px;
+  height: 76px;
+  border-radius: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.15), rgba(124, 58, 237, 0.24));
+  color: var(--color-primary);
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  box-shadow: 0 20px 40px rgba(37, 99, 235, 0.18);
+}
+
+.expert-card h3 {
+  font-size: 1.6rem;
+  margin-bottom: 0.4rem;
+}
+
+.expert-summary {
+  margin-bottom: 0;
+  color: var(--color-muted);
+}
+
+.expert-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.expert-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.06);
+  color: var(--color-dark);
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.expert-tag::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+}
+
+.expert-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.expert-metric {
+  border-radius: 18px;
+  padding: 1rem 1.1rem;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  box-shadow: 0 16px 35px rgba(15, 23, 42, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.expert-metric strong {
+  font-size: 1.45rem;
+  color: var(--color-primary);
+}
+
+.expert-metric span {
+  color: var(--color-muted);
+  font-size: 0.92rem;
+}
+
+.expert-meta {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.expert-meta li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--color-muted);
+  font-weight: 500;
+}
+
+.expert-meta i {
+  color: var(--color-primary);
+}
+
+.expert-contact-cta {
+  margin-top: auto;
+  align-self: flex-start;
+  padding-inline: 2.2rem;
+}
+
+.expert-details {
+  height: 100%;
+  padding: 2.6rem 2.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  border-radius: var(--radius-lg);
+}
+
+.expert-section h4 {
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.expert-section h4 i {
+  color: var(--color-secondary);
+  font-size: 1.2rem;
+}
+
+.expert-inline-note {
+  display: block;
+  margin-top: 0.3rem;
+  color: var(--color-muted);
+  font-weight: 500;
+}
+
+.expert-section .list-check {
+  margin: 0;
+}
+
+.expert-section p {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+.expert-languages {
+  border-top: 1px solid rgba(148, 163, 184, 0.25);
+  padding-top: 1.2rem;
+}
+
+.expert-pill-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.expert-pill-list li {
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(37, 99, 235, 0.12);
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
 .benefits-metrics {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -229,6 +439,19 @@
   .workshops-benefits__card {
     padding: 2.4rem 2.2rem;
   }
+
+  .expert-card,
+  .expert-details {
+    padding: 2.2rem;
+  }
+
+  .expert-details {
+    gap: 1.6rem;
+  }
+
+  .expert-metrics {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  }
 }
 
 @media (max-width: 767.98px) {
@@ -248,6 +471,24 @@
   .list-check-inline {
     gap: 0.6rem;
   }
+
+  .expert-card__top {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .expert-avatar {
+    margin: 0 auto;
+  }
+
+  .expert-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .expert-contact-cta {
+    width: 100%;
+    text-align: center;
+  }
 }
 
 @media (max-width: 575.98px) {
@@ -257,5 +498,18 @@
 
   .faq-mini-accordion {
     padding: 2rem 1.6rem;
+  }
+
+  .expert-card,
+  .expert-details {
+    padding: 2rem 1.6rem;
+  }
+
+  .expert-card h3 {
+    font-size: 1.45rem;
+  }
+
+  .expert-pill-list {
+    gap: 0.45rem;
   }
 }
