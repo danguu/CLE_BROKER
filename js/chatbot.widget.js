@@ -4,7 +4,7 @@
   const CFG = {
     businessName: "Cle_Broker",
     tagline: "online",
-    email: "cle23gallo@gmail.com",
+    email: "cle.broker01@gmail.com",
     phone: "+573003137616",
     phoneDisplay: "+57 300 3137 616",
     whatsappURL: "573003137616",
