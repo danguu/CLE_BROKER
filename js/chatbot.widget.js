@@ -6,7 +6,7 @@
     tagline: "online",
     email: "cle.broker01@gmail.com",
     phone: "+573003137616",
-    phoneDisplay: "+57 300 3137 616",
+    phoneDisplay: "+57 300 313 7616",
     whatsappURL: "573003137616",
     hours: [
       { d: "Lunes a Viernes", h: "8:00–17:00" },
