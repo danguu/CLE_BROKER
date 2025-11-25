@@ -198,6 +198,412 @@
   box-shadow: var(--shadow-hover);
 }
 
+.btn-tourism-link {
+  border-color: rgba(255, 255, 255, 0.7);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(4px);
+}
+
+.btn-tourism-link:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.tourism-hero .hero-overlay {
+  background: linear-gradient(120deg, rgba(15, 23, 42, 0.8) 10%, rgba(6, 182, 212, 0.7) 55%, rgba(37, 99, 235, 0.6) 100%);
+  opacity: 0.92;
+}
+
+.tourism-hero .hero-title,
+.tourism-hero .hero-subtitle {
+  color: #ffffff;
+}
+
+.tourism-hero .hero-subtitle {
+  max-width: 620px;
+}
+
+.tourism-hero-card {
+  padding: 2.6rem 2.8rem;
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(6, 182, 212, 0.2);
+  box-shadow: 0 30px 60px rgba(15, 23, 42, 0.18);
+}
+
+.tourism-hero-card .list-check li i {
+  color: var(--color-secondary);
+}
+
+.tourism-intro {
+  position: relative;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.05) 0%, rgba(37, 99, 235, 0.08) 100%);
+}
+
+.tourism-intro__content {
+  padding: 3rem;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(37, 99, 235, 0.14);
+  box-shadow: 0 35px 65px rgba(15, 23, 42, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.tourism-intro__content h2 {
+  font-size: 2.35rem;
+}
+
+.tourism-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 1.2rem;
+  border-radius: 999px;
+  background: rgba(37, 99, 235, 0.1);
+  color: var(--color-primary);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+}
+
+.tourism-intro__actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.tourism-intro__stats {
+  padding: 2.8rem;
+  border-radius: 28px;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.92), rgba(124, 58, 237, 0.88));
+  color: #ffffff;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.tourism-stat {
+  padding: 1.6rem;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tourism-stat strong {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.tourism-stat span {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.tourism-benefits {
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
+}
+
+.tourism-benefit-card {
+  padding: 2.6rem 2.4rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.tourism-benefit-card h3 {
+  font-size: 1.4rem;
+}
+
+.tourism-benefit-card p {
+  color: var(--color-muted);
+}
+
+.tourism-programs {
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.03) 0%, rgba(15, 23, 42, 0) 100%);
+}
+
+.tourism-program-card {
+  padding: 2.6rem 2.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  height: 100%;
+  border: 1px solid rgba(37, 99, 235, 0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tourism-program-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-hover);
+}
+
+.program-badge {
+  align-self: flex-start;
+  padding: 0.4rem 1.1rem;
+  border-radius: 999px;
+  background: rgba(37, 99, 235, 0.12);
+  color: var(--color-primary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.72rem;
+}
+
+.program-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.program-features li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--color-muted);
+}
+
+.program-features i {
+  color: var(--color-secondary);
+}
+
+.program-cta {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: #ffffff;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.program-cta:hover {
+  color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+.tourism-programs__disclaimer {
+  margin-top: 2.8rem;
+  padding: 1.3rem 1.6rem;
+  border-radius: 18px;
+  background: rgba(37, 99, 235, 0.08);
+  color: var(--color-primary);
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.tourism-process {
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
+}
+
+.tourism-process__grid {
+  margin-top: 3rem;
+  display: grid;
+  gap: 1.8rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.tourism-process__card {
+  padding: 2.4rem 2.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  border: 1px solid rgba(37, 99, 235, 0.1);
+}
+
+.tourism-process__card h3 {
+  font-size: 1.35rem;
+}
+
+.tourism-process__card p {
+  color: var(--color-muted);
+}
+
+.tourism-testimonials {
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.05) 0%, rgba(37, 99, 235, 0.05) 100%);
+}
+
+.tourism-testimonial {
+  padding: 2.4rem 2.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  height: 100%;
+  border: 1px solid rgba(124, 58, 237, 0.12);
+}
+
+.testimonial-text {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--color-dark);
+}
+
+.testimonial-author {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  color: var(--color-muted);
+}
+
+.testimonial-author strong {
+  font-size: 1rem;
+  color: var(--color-primary);
+}
+
+.tourism-quote {
+  padding-top: 5.5rem;
+  padding-bottom: 5.5rem;
+}
+
+.tourism-quote__panel {
+  padding: 3rem 3.2rem;
+  border-radius: 32px;
+  border: 1px solid rgba(37, 99, 235, 0.12);
+  box-shadow: 0 40px 70px rgba(15, 23, 42, 0.12);
+}
+
+.tourism-quote__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.tourism-quote__content h2 {
+  font-size: 2.1rem;
+}
+
+.tourism-quote__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.tourism-quote__form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.tourism-quote__form label {
+  font-weight: 600;
+  color: var(--color-dark);
+}
+
+.tourism-quote__form .form-control {
+  border-radius: 16px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  padding: 0.85rem 1.1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tourism-quote__form .form-control:focus {
+  border-color: rgba(37, 99, 235, 0.6);
+  box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.15);
+}
+
+.tourism-quote__form button {
+  align-self: flex-start;
+}
+
+.tourism-quote__message {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  height: 0;
+  width: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+.tourism-quote .form-feedback p {
+  margin: 0;
+  font-weight: 600;
+}
+
+.tourism-quote .form-message-success {
+  color: var(--color-success, #059669);
+}
+
+.tourism-quote .form-message-error {
+  color: var(--color-danger, #dc2626);
+}
+
+@media (max-width: 991.98px) {
+  .tourism-intro__content,
+  .tourism-intro__stats,
+  .tourism-quote__panel {
+    border-radius: 24px;
+  }
+
+  .tourism-intro__stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tourism-process__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767.98px) {
+  .tourism-intro,
+  .tourism-benefits,
+  .tourism-programs,
+  .tourism-process,
+  .tourism-testimonials,
+  .tourism-quote {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .tourism-intro__content {
+    padding: 2.4rem 2rem;
+  }
+
+  .tourism-intro__stats {
+    grid-template-columns: 1fr;
+  }
+
+  .tourism-process__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tourism-program-card,
+  .tourism-testimonial,
+  .tourism-benefit-card {
+    padding: 2.1rem 1.9rem;
+  }
+}
+
 .services-process .process-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

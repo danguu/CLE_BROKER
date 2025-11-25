@@ -1,127 +1,80 @@
-jQuery(document).ready(function($) {
-  "use strict";
+(() => {
+  const API_BASE_URL = window.APP_CONFIG?.apiBaseUrl?.replace(/\/$/, '') || '';
 
-  //Contact
-  $('form.contactForm').submit(function() {
-    var isStubForm = $(this).data('stub') === true || $(this).attr('data-stub') === 'true';
-    var f = $(this).find('.form-group'),
-      ferror = false,
-      emailExp = /^[^\s()<>@,;:\/]+@\w[\w\.-]+\.[a-z]{2,}$/i;
+  function buildPayload(form) {
+    const formData = new FormData(form);
+    const payload = {};
+    const keys = Array.from(new Set(formData.keys()));
 
-    f.children('input').each(function() { // run all inputs
-
-      var i = $(this); // current input
-      var rule = i.attr('data-rule');
-
-      if (rule !== undefined) {
-        var ierror = false; // error flag for current input
-        var pos = rule.indexOf(':', 0);
-        if (pos >= 0) {
-          var exp = rule.substr(pos + 1, rule.length);
-          rule = rule.substr(0, pos);
-        } else {
-          rule = rule.substr(pos + 1, rule.length);
-        }
-
-        switch (rule) {
-          case 'required':
-            if (i.val() === '') {
-              ferror = ierror = true;
-            }
-            break;
-
-          case 'minlen':
-            if (i.val().length < parseInt(exp)) {
-              ferror = ierror = true;
-            }
-            break;
-
-          case 'email':
-            if (!emailExp.test(i.val())) {
-              ferror = ierror = true;
-            }
-            break;
-
-          case 'checked':
-            if (! i.is(':checked')) {
-              ferror = ierror = true;
-            }
-            break;
-
-          case 'regexp':
-            exp = new RegExp(exp);
-            if (!exp.test(i.val())) {
-              ferror = ierror = true;
-            }
-            break;
-        }
-        i.next('.validation').html((ierror ? (i.attr('data-msg') !== undefined ? i.attr('data-msg') : 'wrong Input') : '')).show('blind');
-      }
+    keys.forEach((key) => {
+      const values = formData.getAll(key);
+      payload[key] = values.length > 1 ? values : values[0];
     });
-    f.children('textarea').each(function() { // run all inputs
 
-      var i = $(this); // current input
-      var rule = i.attr('data-rule');
+    return payload;
+  }
 
-      if (rule !== undefined) {
-        var ierror = false; // error flag for current input
-        var pos = rule.indexOf(':', 0);
-        if (pos >= 0) {
-          var exp = rule.substr(pos + 1, rule.length);
-          rule = rule.substr(0, pos);
-        } else {
-          rule = rule.substr(pos + 1, rule.length);
-        }
-
-        switch (rule) {
-          case 'required':
-            if (i.val() === '') {
-              ferror = ierror = true;
-            }
-            break;
-
-          case 'minlen':
-            if (i.val().length < parseInt(exp)) {
-              ferror = ierror = true;
-            }
-            break;
-        }
-        i.next('.validation').html((ierror ? (i.attr('data-msg') != undefined ? i.attr('data-msg') : 'wrong Input') : '')).show('blind');
-      }
-    });
-    if (ferror) return false;
-    else var str = $(this).serialize();
-
-    if (isStubForm) {
-      $("#sendmessage").addClass("show");
-      $("#errormessage").removeClass("show");
-      $(this).find("input, textarea, select").val("");
-      console.info('TODO: Reemplazar stub del formulario con integración real.');
-      return false;
+  function updateMessage(container, message) {
+    if (!container) {
+      return;
     }
-    var action = $(this).attr('action');
-    if( ! action ) {
-      action = 'contactform/contactform.php';
+
+    container.textContent = message;
+    container.hidden = !message;
+  }
+
+  async function submitForm(event) {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const endpoint = form.dataset.endpoint;
+
+    if (!endpoint) {
+      return;
     }
-    $.ajax({
-      type: "POST",
-      url: action,
-      data: str,
-      success: function(msg) {
-        // alert(msg);
-        if (msg == 'OK') {
-          $("#sendmessage").addClass("show");
-          $("#errormessage").removeClass("show");
-          $('.contactForm').find("input, textarea").val("");
-        } else {
-          $("#sendmessage").removeClass("show");
-          $("#errormessage").addClass("show");
-          $('#errormessage').html(msg);
-        }
 
+    const successMessage =
+      form.dataset.successMessage || 'Gracias por escribirnos. Pronto nos pondremos en contacto.';
+    const errorMessage =
+      form.dataset.errorMessage || 'No pudimos enviar tu solicitud. Intenta nuevamente en unos minutos.';
+
+    const successContainer = form.querySelector('.form-message-success');
+    const errorContainer = form.querySelector('.form-message-error');
+
+    updateMessage(successContainer, '');
+    updateMessage(errorContainer, '');
+
+    const payload = buildPayload(form);
+
+    try {
+      const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+        method: form.dataset.method || 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const body = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        const message = body?.error || errorMessage;
+        throw new Error(message);
       }
-    });
-    return false;
-  });
 
-});
+      form.reset();
+      updateMessage(successContainer, body?.message || successMessage);
+    } catch (error) {
+      updateMessage(errorContainer, error.message || errorMessage);
+    }
+  }
+
+  function init() {
+    const forms = document.querySelectorAll('form[data-endpoint]');
+    forms.forEach((form) => {
+      form.addEventListener('submit', submitForm);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', init);
+})();

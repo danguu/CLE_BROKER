@@ -1,8 +1,16 @@
-// JS extraído de servicios.html
+(() => {
+  function initPropertiesCarousel() {
+    if (!window.jQuery) {
+      return;
+    }
 
-// Inicializar el carrusel de propiedades
-    $(document).ready(function(){
-      $(".properties-carousel").owlCarousel({
+    window.jQuery(($) => {
+      const $carousel = $(".properties-carousel");
+      if (!$carousel.length || typeof $carousel.owlCarousel !== "function") {
+        return;
+      }
+
+      $carousel.owlCarousel({
         loop: true,
         margin: 30,
         nav: true,
@@ -12,14 +20,20 @@
         autoplayHoverPause: true,
         responsive: {
           0: {
-            items: 1
+            items: 1,
           },
           768: {
-            items: 1
+            items: 1,
           },
           992: {
-            items: 2
-          }
-        }
+            items: 2,
+          },
+        },
       });
     });
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    initPropertiesCarousel();
+  });
+})();
